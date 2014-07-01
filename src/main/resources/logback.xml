@@ -1,0 +1,29 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <pattern>&gt; &#x1b;[31m%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} &#x1b;[0m - &#x1b;[1m %msg &#x1b;[0m%n</pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="BACKEND" class="ch.qos.logback.core.FileAppender">
+        <file>noise-backend.log</file>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <logger name="com.morphe.noise.backend" level="trace">
+        <appender-ref ref="BACKEND"/>
+    </logger>
+    <logger name="com.morphe.noise.server" level="trace">
+        <appender-ref ref="BACKEND"/>
+    </logger>
+    
+    <root level="debug">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

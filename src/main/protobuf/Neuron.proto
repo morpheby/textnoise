@@ -1,0 +1,25 @@
+//
+// Neuron.proto
+// textnoise
+// 
+// Created by Илья Михальцов on 2014-05-14.
+// Copyright 2014 Илья Михальцов. All rights reserved.
+
+
+package resources.generated;
+
+option optimize_for = SPEED;
+
+message NeuronPack {
+    repeated double connections = 1 [packed=true];
+    required int32 layer = 2;
+    required int32 index = 3;
+}
+
+message LayerPack {
+    repeated NeuronPack neurons = 1;
+}
+
+message BrainPack {
+    repeated LayerPack layers = 1;
+}
